@@ -15,7 +15,7 @@ var goBot *discordgo.Session
 var MSG string
 
 func Start() {
-	MSG = "HI I am a Bot. I can tell you the the temperature. To get the temperature msg me in below formart:\n**temp palce_name**\n\n-Developed by Sankalp Kumar."
+	MSG = "HI I am a Bot. I can tell you the the temperature. To get the temperature msg me in below formart:\n**temp place_name**\n\n-Developed by Sankalp Kumar."
 	goBot, err := discordgo.New("Bot " + config.Token)
 	if err != nil {
 		fmt.Println(err.Error())
