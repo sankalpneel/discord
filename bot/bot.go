@@ -51,7 +51,10 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if msg[0] == "ping" {
 		_, _ = s.ChannelMessageSend(m.ChannelID, "pong")
 	} else if msg[0] == "temp" {
-		_, _ = s.ChannelMessageSend(m.ChannelID, "Temperature in"+msg[2]+"is = "+temperature.Query(msg[1]))
+		_, err := s.ChannelMessageSend(m.ChannelID, "Temperature of "+msg[1]+" is = "+temperature.Query(msg[1]))
+		if err != nil {
+			s.ChannelMessageSend(m.ChannelID, "Oops Something went wrong...Try again!!")
+		}
 	} else {
 		_, _ = s.ChannelMessageSend(m.ChannelID, MSG)
 	}
